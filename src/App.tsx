@@ -243,7 +243,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-slate-100 flex flex-col font-sans overflow-x-auto overflow-y-auto">
       {/* Top Application Toolbar */}
       <Toolbar
         language={language}
