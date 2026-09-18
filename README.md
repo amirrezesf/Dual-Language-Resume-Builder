@@ -4,6 +4,10 @@ A Vite + React app for creating and exporting bilingual resumes in English and P
 
 This project is designed for people who want to present a resume in two languages side-by-side or switch between languages while editing.
 
+## Screenshot
+
+![Dual Language Resume Builder preview](docs/resume-builder-screenshot.svg)
+
 ## Features
 
 - Bilingual resume editing for English and Persian
