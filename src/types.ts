@@ -33,7 +33,9 @@ export interface SkillCategory {
 
 export interface LanguageProficiency {
   name: string;
-  level: string;
+  level?: string;
+  certificateTitle?: string;
+  certificateUrl?: string;
 }
 
 export interface ExperienceItem {

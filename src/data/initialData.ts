@@ -13,7 +13,7 @@ export const initialResumeData: DualResumeData = {
       website: "amirrezesf.github.io",
     },
     summary:
-      "Full-stack developer who builds complete, production-oriented systems — combining Django/DRF backends with React and Vue/Nuxt frontends, and Flutter for mobile. Founder of Clinitech, an offline-first clinic management platform built to keep running through internet blackouts, with a dual-server architecture, real-time updates, and encrypted data sync. Comfortable owning a project end to end: system architecture, API design, database modeling, and the UI that sits on top of it, with recurring experience building Persian/RTL interfaces.",
+      "Full-stack developer combining Django/DRF backends with React and Vue/Nuxt frontends, and Flutter for mobile. Founder of Clinitech, an offline-first clinic management platform built to survive internet blackouts, with a dual-server architecture and encrypted data sync. Handles architecture, API design, and database modeling myself, with recurring experience building Persian/RTL interfaces.",
     skillCategories: [
       {
         id: "backend",

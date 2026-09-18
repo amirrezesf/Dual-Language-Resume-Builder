@@ -668,47 +668,80 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
               </span>
               <div className="space-y-2">
                 {currentContent.languages.map((lang, lIdx) => (
-                  <div key={lIdx} className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      value={lang.name}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        updateCurrentContent((p) => {
-                          const langs = [...p.languages];
-                          langs[lIdx] = { ...langs[lIdx], name: val };
-                          return { ...p, languages: langs };
-                        });
-                      }}
-                      placeholder="Language"
-                      className="flex-1 px-2 py-1 bg-white border border-slate-300 rounded"
-                    />
-                    <input
-                      type="text"
-                      value={lang.level}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        updateCurrentContent((p) => {
-                          const langs = [...p.languages];
-                          langs[lIdx] = { ...langs[lIdx], level: val };
-                          return { ...p, languages: langs };
-                        });
-                      }}
-                      placeholder="e.g. native / advanced"
-                      className="w-32 px-2 py-1 bg-white border border-slate-300 rounded"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        updateCurrentContent((p) => ({
-                          ...p,
-                          languages: p.languages.filter((_, i) => i !== lIdx),
-                        }));
-                      }}
-                      className="text-red-500 hover:text-red-700 p-1"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+                  <div key={lIdx} className="space-y-2 rounded-lg border border-slate-200 bg-slate-50 p-2">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={lang.name}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          updateCurrentContent((p) => {
+                            const langs = [...p.languages];
+                            langs[lIdx] = { ...langs[lIdx], name: val };
+                            return { ...p, languages: langs };
+                          });
+                        }}
+                        placeholder="Language"
+                        className="flex-1 px-2 py-1 bg-white border border-slate-300 rounded"
+                      />
+                      <input
+                        type="text"
+                        value={lang.level ?? ''}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          updateCurrentContent((p) => {
+                            const langs = [...p.languages];
+                            langs[lIdx] = { ...langs[lIdx], level: val };
+                            return { ...p, languages: langs };
+                          });
+                        }}
+                        placeholder="e.g. native / advanced"
+                        className="w-32 px-2 py-1 bg-white border border-slate-300 rounded"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          updateCurrentContent((p) => ({
+                            ...p,
+                            languages: p.languages.filter((_, i) => i !== lIdx),
+                          }));
+                        }}
+                        className="text-red-500 hover:text-red-700 p-1"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <input
+                        type="text"
+                        value={lang.certificateTitle ?? ''}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          updateCurrentContent((p) => {
+                            const langs = [...p.languages];
+                            langs[lIdx] = { ...langs[lIdx], certificateTitle: val };
+                            return { ...p, languages: langs };
+                          });
+                        }}
+                        placeholder={isRtl ? 'عنوان مدرک زبان (اختیاری)' : 'Certificate title (optional)'}
+                        className="px-2 py-1 bg-white border border-slate-300 rounded"
+                      />
+                      <input
+                        type="url"
+                        value={lang.certificateUrl ?? ''}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          updateCurrentContent((p) => {
+                            const langs = [...p.languages];
+                            langs[lIdx] = { ...langs[lIdx], certificateUrl: val };
+                            return { ...p, languages: langs };
+                          });
+                        }}
+                        placeholder={isRtl ? 'لینک مدرک زبان (اختیاری)' : 'Certificate URL (optional)'}
+                        className="px-2 py-1 bg-white border border-slate-300 rounded"
+                      />
+                    </div>
                   </div>
                 ))}
                 <button
@@ -718,7 +751,12 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
                       ...p,
                       languages: [
                         ...p.languages,
-                        { name: isRtl ? 'زبان جدید' : 'Language', level: isRtl ? 'متوسط' : 'intermediate' },
+                        {
+                          name: isRtl ? 'زبان جدید' : 'Language',
+                          level: isRtl ? 'متوسط' : 'intermediate',
+                          certificateTitle: '',
+                          certificateUrl: '',
+                        },
                       ],
                     }));
                   }}

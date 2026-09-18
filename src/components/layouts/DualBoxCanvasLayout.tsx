@@ -21,8 +21,6 @@ import {
   LayoutDashboard,
   Activity,
   Network,
-  Columns2,
-  Rows3,
   Sparkles,
   Camera,
   Loader2,
@@ -50,7 +48,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
 }) => {
   const isRtl = language === 'fa';
   const accent = settings.accentColor || '#2563eb';
-  const [spreadMode, setSpreadMode] = useState<'side-by-side' | 'stacked'>('side-by-side');
+  const spreadMode: 'side-by-side' | 'stacked' = 'side-by-side';
   const [canvasBg, setCanvasBg] = useState<CanvasBackdropTheme>('studio');
   const [isExportingMockup, setIsExportingMockup] = useState(false);
   const [isExportingPdf, setIsExportingPdf] = useState(false);
@@ -256,44 +254,6 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
               </button>
             ))}
           </div>
-
-          {/* View Arrangement Toggle (Side-by-Side vs Stacked) */}
-          {settings.showPage2 && pageFilter === 'all' && (
-            <div
-              className={`flex items-center gap-1 p-1 rounded-xl border text-xs font-semibold ${
-                canvasBg === 'charcoal'
-                  ? 'bg-slate-800/90 border-slate-700 text-slate-300'
-                  : 'bg-white/95 border-slate-200 text-slate-600'
-              }`}
-            >
-              <button
-                type="button"
-                onClick={() => setSpreadMode('side-by-side')}
-                className={`px-2.5 py-1 rounded-lg flex items-center gap-1.5 transition-all ${
-                  spreadMode === 'side-by-side'
-                    ? 'bg-slate-900 text-white shadow-2xs'
-                    : 'hover:bg-slate-200/50'
-                }`}
-                title={labels.sideBySide}
-              >
-                <Columns2 className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{labels.sideBySide}</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setSpreadMode('stacked')}
-                className={`px-2.5 py-1 rounded-lg flex items-center gap-1.5 transition-all ${
-                  spreadMode === 'stacked'
-                    ? 'bg-slate-900 text-white shadow-2xs'
-                    : 'hover:bg-slate-200/50'
-                }`}
-                title={labels.stacked}
-              >
-                <Rows3 className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{labels.stacked}</span>
-              </button>
-            </div>
-          )}
 
           {/* Export Canvas PDF Button */}
           <button
@@ -535,7 +495,10 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                           <span>{labels.languages}</span>
                         </div>
                         <div className="flex flex-wrap gap-1.5">
-                          {data.languages.map((l, i) => (
+                          {data.languages.map((l, i) => {
+                          const hasLevel = Boolean(l.level?.trim());
+                          const hasCertificate = Boolean(l.certificateTitle?.trim()) && Boolean(l.certificateUrl?.trim());
+                          return (
                             <span
                               key={i}
                               className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-semibold border shadow-2xs"
@@ -550,9 +513,20 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                                 style={{ backgroundColor: accent }}
                               />
                               <span>{l.name}</span>
-                              <span className="text-slate-500 font-normal text-[9px]">({l.level})</span>
+                              {hasLevel && <span className="text-slate-500 font-normal text-[9px]">({l.level})</span>}
+                              {hasCertificate && (
+                                <a
+                                  href={l.certificateUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-slate-600 underline underline-offset-2 hover:text-slate-800"
+                                >
+                                  — {l.certificateTitle}
+                                </a>
+                              )}
                             </span>
-                          ))}
+                          );
+                        })}
                         </div>
                       </div>
                     )}
@@ -701,7 +675,9 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
             {/* PAGE 1 FOOTER */}
             <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-[10px] text-slate-400">
               <span className="font-semibold text-slate-600">
-                {data.footerQuotePage1 || `${data.name} — ${data.roleTitle}`}
+                {settings.layoutId === 'dual-box-board'
+                  ? data.footerQuotePage1
+                  : data.footerQuotePage1 || `${data.name} — ${data.roleTitle}`}
               </span>
               <span className="font-mono">{labels.page1Of2}</span>
             </div>
@@ -765,24 +741,30 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
 
             <div className="space-y-4">
               {/* PAGE 2 CONTINUITY HEADER */}
-              <div className="flex items-center justify-between pb-2.5 border-b border-slate-200">
-                <div className="flex items-center gap-2.5">
-                  <ResumeLogo color={accent} className="w-6 h-6" />
-                  <div>
-                    <span className="font-bold text-slate-900 text-sm">
-                      {data.name}
-                    </span>
-                    <span className="text-xs text-slate-400 mx-2">•</span>
-                    <span className="text-xs text-slate-600 font-medium">
-                      {data.roleTitle}
-                    </span>
+              {settings.layoutId !== 'dual-box-board' ? (
+                <div className="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                  <div className="flex items-center gap-2.5">
+                    <ResumeLogo color={accent} className="w-6 h-6" />
+                    <div>
+                      <span className="font-bold text-slate-900 text-sm">
+                        {data.name}
+                      </span>
+                      <span className="text-xs text-slate-400 mx-2">•</span>
+                      <span className="text-xs text-slate-600 font-medium">
+                        {data.roleTitle}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="text-[10px] text-slate-400 font-mono">
+                    {labels.page2Of2}
                   </div>
                 </div>
-
-                <div className="text-[10px] text-slate-400 font-mono">
-                  {labels.page2Of2}
+              ) : (
+                <div className="flex justify-start pb-2.5">
+                  <ResumeLogo color={accent} className="w-6 h-6" />
                 </div>
-              </div>
+              )}
 
               {/* MORE WORK EXPERIENCE (if > 2 experiences) */}
               {data.experiences.length > 2 && (
@@ -967,7 +949,9 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
             {/* PAGE 2 FOOTER */}
             <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-[10px] text-slate-400">
               <span className="font-semibold text-slate-600">
-                {data.footerQuotePage2 || `${data.name} — ${data.roleTitle}`}
+                {settings.layoutId === 'dual-box-board'
+                  ? data.footerQuotePage2
+                  : data.footerQuotePage2 || `${data.name} — ${data.roleTitle}`}
               </span>
               <span className="font-mono">{labels.page2Of2}</span>
             </div>

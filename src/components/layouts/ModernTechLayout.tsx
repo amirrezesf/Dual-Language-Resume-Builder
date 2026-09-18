@@ -269,24 +269,38 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
                         <span>{labels.languages}</span>
                       </div>
                       <div className="flex flex-wrap gap-1.5">
-                        {data.languages.map((l, i) => (
-                          <span
-                            key={i}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-semibold border shadow-2xs"
-                            style={{
-                              backgroundColor: `${accent}0C`,
-                              borderColor: `${accent}25`,
-                              color: '#0f172a',
-                            }}
-                          >
+                        {data.languages.map((l, i) => {
+                          const hasLevel = Boolean(l.level?.trim());
+                          const hasCertificate = Boolean(l.certificateTitle?.trim()) && Boolean(l.certificateUrl?.trim());
+                          return (
                             <span
-                              className="w-1.5 h-1.5 rounded-full shrink-0"
-                              style={{ backgroundColor: accent }}
-                            />
-                            <span>{l.name}</span>
-                            <span className="text-slate-500 font-normal text-[9px]">({l.level})</span>
-                          </span>
-                        ))}
+                              key={i}
+                              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-semibold border shadow-2xs"
+                              style={{
+                                backgroundColor: `${accent}0C`,
+                                borderColor: `${accent}25`,
+                                color: '#0f172a',
+                              }}
+                            >
+                              <span
+                                className="w-1.5 h-1.5 rounded-full shrink-0"
+                                style={{ backgroundColor: accent }}
+                              />
+                              <span>{l.name}</span>
+                              {hasLevel && <span className="text-slate-500 font-normal text-[9px]">({l.level})</span>}
+                              {hasCertificate && (
+                                <a
+                                  href={l.certificateUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-slate-600 underline underline-offset-2 hover:text-slate-800"
+                                >
+                                  — {l.certificateTitle}
+                                </a>
+                              )}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   )}

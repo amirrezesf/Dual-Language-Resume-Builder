@@ -243,7 +243,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-100 flex flex-col font-sans overflow-x-hidden">
       {/* Top Application Toolbar */}
       <Toolbar
         language={language}
@@ -275,10 +275,10 @@ export default function App() {
       />
 
       {/* Main Workspace Layout */}
-      <div className="flex-1 flex overflow-hidden relative">
+      <div className="flex-1 flex overflow-hidden relative overflow-x-hidden">
         {/* Editor Sidebar Drawer */}
         {isEditorOpen && (
-          <aside className="no-print w-full md:w-[420px] lg:w-[460px] p-4 bg-slate-100/60 border-r border-slate-200/90 h-[calc(100vh-57px)] overflow-hidden shrink-0 z-20 transition-all duration-300">
+          <aside className="no-print sticky top-[57px] self-start w-full md:w-[420px] lg:w-[460px] p-4 bg-slate-100/60 border-r border-slate-200/90 h-[calc(100vh-57px)] overflow-y-auto shrink-0 z-20 transition-all duration-300">
             <ResumeEditor
               resumeData={resumeData}
               onChange={setResumeData}
@@ -309,7 +309,7 @@ export default function App() {
         )}
 
         {/* Resume Preview Stage */}
-        <main className="flex-1 h-[calc(100vh-57px)] overflow-auto p-4 md:p-8 bg-slate-200/70 flex flex-col items-center">
+        <main className="flex-1 h-[calc(100vh-57px)] overflow-y-auto overflow-x-hidden p-4 md:p-8 bg-slate-200/70 flex flex-col items-center">
           {/* Side-by-Side Dual View */}
           {viewMode === 'split' ? (
             <div className="w-full flex flex-col xl:flex-row items-center justify-center gap-10">

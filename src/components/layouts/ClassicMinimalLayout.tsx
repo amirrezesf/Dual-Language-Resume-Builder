@@ -122,24 +122,38 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
                       {isRtl ? 'زبان‌ها' : 'LANGUAGES'}:
                     </span>
                     <div className="flex flex-wrap gap-1.5 flex-1">
-                      {data.languages.map((l, idx) => (
-                        <span
-                          key={idx}
-                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[9.5px] font-semibold border shadow-2xs"
-                          style={{
-                            backgroundColor: `${accent}0A`,
-                            borderColor: `${accent}25`,
-                            color: '#0f172a',
-                          }}
-                        >
+                      {data.languages.map((l, idx) => {
+                        const hasLevel = Boolean(l.level?.trim());
+                        const hasCertificate = Boolean(l.certificateTitle?.trim()) && Boolean(l.certificateUrl?.trim());
+                        return (
                           <span
-                            className="w-1.5 h-1.5 rounded-full shrink-0"
-                            style={{ backgroundColor: accent }}
-                          />
-                          <span>{l.name}</span>
-                          <span className="text-slate-500 font-normal text-[8.5px]">({l.level})</span>
-                        </span>
-                      ))}
+                            key={idx}
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[9.5px] font-semibold border shadow-2xs"
+                            style={{
+                              backgroundColor: `${accent}0A`,
+                              borderColor: `${accent}25`,
+                              color: '#0f172a',
+                            }}
+                          >
+                            <span
+                              className="w-1.5 h-1.5 rounded-full shrink-0"
+                              style={{ backgroundColor: accent }}
+                            />
+                            <span>{l.name}</span>
+                            {hasLevel && <span className="text-slate-500 font-normal text-[8.5px]">({l.level})</span>}
+                            {hasCertificate && (
+                              <a
+                                href={l.certificateUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-slate-600 underline underline-offset-2 hover:text-slate-800"
+                              >
+                                — {l.certificateTitle}
+                              </a>
+                            )}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

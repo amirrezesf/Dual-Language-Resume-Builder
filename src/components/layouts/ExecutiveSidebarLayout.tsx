@@ -191,12 +191,28 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
                     {labels.languages}
                   </h3>
                   <div className="space-y-1 text-[10.5px]">
-                    {data.languages.map((l, idx) => (
-                      <div key={idx} className="flex justify-between items-center">
-                        <span className="font-semibold text-slate-800">{l.name}</span>
-                        <span className="text-slate-500 text-[10px]">{l.level}</span>
-                      </div>
-                    ))}
+                    {data.languages.map((l, idx) => {
+                      const hasLevel = Boolean(l.level?.trim());
+                      const hasCertificate = Boolean(l.certificateTitle?.trim()) && Boolean(l.certificateUrl?.trim());
+                      return (
+                        <div key={idx} className="flex justify-between items-center gap-2">
+                          <span className="font-semibold text-slate-800">{l.name}</span>
+                          <div className="flex items-center gap-1 text-right">
+                            {hasLevel && <span className="text-slate-500 text-[10px]">{l.level}</span>}
+                            {hasCertificate && (
+                              <a
+                                href={l.certificateUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-[10px] text-slate-600 underline underline-offset-2 hover:text-slate-800"
+                              >
+                                {l.certificateTitle}
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
