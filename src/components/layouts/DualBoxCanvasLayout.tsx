@@ -372,11 +372,11 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
               {/* HEADER SECTION */}
               <div className="flex items-start justify-between gap-4 pb-3.5 border-b border-slate-200">
                 <div className="space-y-1 max-w-[480px]">
-                  <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                  <h1 className={`${isRtl ? '' : 'tracking-tight'} text-3xl font-extrabold text-slate-900 leading-tight`}>
                     {data.name}
                   </h1>
                   <p
-                    className="text-xs font-bold tracking-wider uppercase"
+                    className={`${isRtl ? '' : 'tracking-wider'} text-xs font-bold uppercase`}
                     style={{ color: accent }}
                   >
                     {data.roleTitle}
@@ -439,7 +439,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                     className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: accent }}
                   />
-                  <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
+                  <h2 className={`${isRtl ? '' : 'tracking-wider'} text-xs font-black uppercase text-slate-900`}>
                     {labels.skills}
                   </h2>
                   <div className="h-px bg-slate-200 flex-1" />
@@ -490,7 +490,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                     {/* Spoken Languages Badges */}
                     {data.languages.length > 0 && (
                       <div className="pt-1">
-                        <div className="flex items-center gap-1.5 text-[9.5px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                        <div className={`${isRtl ? '' : 'tracking-wider'} flex items-center gap-1.5 text-[9.5px] font-bold text-slate-500 uppercase mb-1`}>
                           <MessageCircle className="w-3 h-3 text-slate-400" />
                           <span>{labels.languages}</span>
                         </div>
@@ -541,7 +541,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                     className="w-2.5 h-2.5 rounded-full shrink-0"
                     style={{ backgroundColor: accent }}
                   />
-                  <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
+                  <h2 className={`${isRtl ? '' : 'tracking-wider'} text-xs font-black uppercase text-slate-900`}>
                     {labels.experience}
                   </h2>
                   <div className="h-px bg-slate-200 flex-1" />
@@ -629,7 +629,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                       className="w-2.5 h-2.5 rounded-full shrink-0"
                       style={{ backgroundColor: accent }}
                     />
-                    <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
+                    <h2 className={`${isRtl ? '' : 'tracking-wider'} text-xs font-black uppercase text-slate-900`}>
                       {labels.selectedProjects}
                     </h2>
                     <div className="h-px bg-slate-200 flex-1" />
@@ -774,7 +774,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                       className="w-2.5 h-2.5 rounded-full shrink-0"
                       style={{ backgroundColor: accent }}
                     />
-                    <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
+                    <h2 className={`${isRtl ? '' : 'tracking-wider'} text-xs font-black uppercase text-slate-900`}>
                       {labels.experience} ({isRtl ? 'ادامه' : 'Continued'})
                     </h2>
                     <div className="h-px bg-slate-200 flex-1" />
@@ -818,7 +818,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <FolderGit2 className="w-4 h-4 shrink-0" style={{ color: accent }} />
-                  <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
+                  <h2 className={`${isRtl ? '' : 'tracking-wider'} text-xs font-black uppercase text-slate-900`}>
                     {labels.moreProjects}
                   </h2>
                   <div className="h-px bg-slate-200 flex-1" />
@@ -878,7 +878,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Layers className="w-4 h-4 shrink-0" style={{ color: accent }} />
-                  <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
+                  <h2 className={`${isRtl ? '' : 'tracking-wider'} text-xs font-black uppercase text-slate-900`}>
                     {labels.highlights}
                   </h2>
                   <div className="h-px bg-slate-200 flex-1" />
@@ -909,7 +909,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <GraduationCap className="w-4 h-4 shrink-0" style={{ color: accent }} />
-                    <h2 className="text-xs font-black tracking-wider uppercase text-slate-900">
+                    <h2 className={`${isRtl ? '' : 'tracking-wider'} text-xs font-black uppercase text-slate-900`}>
                       {labels.education}
                     </h2>
                     <div className="h-px bg-slate-200 flex-1" />

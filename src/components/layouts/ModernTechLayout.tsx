@@ -148,7 +148,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
                   <ResumeLogo color={accent} className="w-9 h-9" />
                 </div>
                 <div className="flex-1">
-                  <h1 className="text-[28px] leading-tight font-extrabold text-slate-950 tracking-tight">
+                  <h1 className={`${isRtl ? '' : 'tracking-tight'} text-[28px] leading-tight font-extrabold text-slate-950`}>
                     {data.name}
                   </h1>
                   <p
@@ -201,7 +201,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
             {/* PROFESSIONAL SUMMARY */}
             <section>
               <div className="flex items-center gap-3 mb-2">
-                <h2 className="text-[12px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[12px] font-extrabold uppercase text-slate-900 shrink-0`}>
                   {labels.summary}
                 </h2>
                 <div className="h-px bg-slate-200/90 flex-1" />
@@ -214,7 +214,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
             {/* TECHNICAL SKILLS */}
             <section>
               <div className="flex items-center gap-3 mb-3">
-                <h2 className="text-[12px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[12px] font-extrabold uppercase text-slate-900 shrink-0`}>
                   {labels.skills}
                 </h2>
                 <div className="h-px bg-slate-200/90 flex-1" />
@@ -224,7 +224,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
                 <div className="space-y-3">
                   {data.skillCategories.slice(0, 3).map((cat) => (
                     <div key={cat.id}>
-                      <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                      <span className={`${isRtl ? '' : 'tracking-wider'} block text-[10px] font-bold text-slate-500 uppercase mb-1.5`}>
                         {cat.title}
                       </span>
                       <div className="flex flex-wrap gap-1.5">
@@ -245,7 +245,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
                 <div className="space-y-3">
                   {data.skillCategories.slice(3).map((cat) => (
                     <div key={cat.id}>
-                      <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                      <span className={`${isRtl ? '' : 'tracking-wider'} block text-[10px] font-bold text-slate-500 uppercase mb-1.5`}>
                         {cat.title}
                       </span>
                       <div className="flex flex-wrap gap-1.5">
@@ -264,7 +264,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
 
                   {data.languages.length > 0 && (
                     <div className="pt-1.5">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                      <div className={`${isRtl ? '' : 'tracking-wider'} flex items-center gap-1.5 text-[10px] font-bold text-slate-500 uppercase mb-1.5`}>
                         <MessageCircle className="w-3 h-3 text-slate-400" />
                         <span>{labels.languages}</span>
                       </div>
@@ -311,7 +311,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
             {/* EXPERIENCE */}
             <section>
               <div className="flex items-center gap-3 mb-2.5">
-                <h2 className="text-[12px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[12px] font-extrabold uppercase text-slate-900 shrink-0`}>
                   {labels.experience}
                 </h2>
                 <div className="h-px bg-slate-200/90 flex-1" />
@@ -387,7 +387,7 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
             {/* SELECTED PROJECTS */}
             <section>
               <div className="flex items-center gap-3 mb-2.5">
-                <h2 className="text-[12px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[12px] font-extrabold uppercase text-slate-900 shrink-0`}>
                   {labels.selectedProjects}
                 </h2>
                 <div className="h-px bg-slate-200/90 flex-1" />

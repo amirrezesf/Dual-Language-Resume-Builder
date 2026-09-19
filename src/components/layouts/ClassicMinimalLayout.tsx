@@ -52,7 +52,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
           <div className="space-y-5">
             {/* Header: Centered & Minimal */}
             <header className="text-center pb-3 border-b-2 border-slate-900">
-              <h1 className="text-[26px] font-black tracking-tight text-slate-950 uppercase">
+              <h1 className={`${isRtl ? '' : 'tracking-tight'} text-[26px] font-black text-slate-950 uppercase`}>
                 {data.name}
               </h1>
               <p
@@ -79,7 +79,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
             {/* SUMMARY */}
             <section>
               <h2
-                className="text-[11px] font-black uppercase tracking-wider pb-1 mb-1.5 border-b border-slate-300"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[11px] font-black uppercase pb-1 mb-1.5 border-b border-slate-300`}
                 style={{ color: accent }}
               >
                 {labels.summary}
@@ -92,7 +92,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
             {/* TECHNICAL SKILLS */}
             <section>
               <h2
-                className="text-[11px] font-black uppercase tracking-wider pb-1 mb-2 border-b border-slate-300"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[11px] font-black uppercase pb-1 mb-2 border-b border-slate-300`}
                 style={{ color: accent }}
               >
                 {labels.skills}
@@ -163,7 +163,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
             {/* WORK EXPERIENCE */}
             <section>
               <h2
-                className="text-[11px] font-black uppercase tracking-wider pb-1 mb-2 border-b border-slate-300"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[11px] font-black uppercase pb-1 mb-2 border-b border-slate-300`}
                 style={{ color: accent }}
               >
                 {labels.experience}
@@ -218,7 +218,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
             {/* SELECTED PROJECTS */}
             <section>
               <h2
-                className="text-[11px] font-black uppercase tracking-wider pb-1 mb-2 border-b border-slate-300"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[11px] font-black uppercase pb-1 mb-2 border-b border-slate-300`}
                 style={{ color: accent }}
               >
                 {labels.selectedProjects}
@@ -274,7 +274,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
             {/* MORE PROJECTS */}
             <section>
               <h2
-                className="text-[11px] font-black uppercase tracking-wider pb-1 mb-2.5 border-b border-slate-300"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[11px] font-black uppercase pb-1 mb-2.5 border-b border-slate-300`}
                 style={{ color: accent }}
               >
                 {labels.moreProjects}
@@ -310,7 +310,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
             {/* ENGINEERING HIGHLIGHTS */}
             <section>
               <h2
-                className="text-[11px] font-black uppercase tracking-wider pb-1 mb-2.5 border-b border-slate-300"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[11px] font-black uppercase pb-1 mb-2.5 border-b border-slate-300`}
                 style={{ color: accent }}
               >
                 {labels.highlights}
@@ -335,7 +335,7 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
             {/* EDUCATION */}
             <section>
               <h2
-                className="text-[11px] font-black uppercase tracking-wider pb-1 mb-2 border-b border-slate-300"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[11px] font-black uppercase pb-1 mb-2 border-b border-slate-300`}
                 style={{ color: accent }}
               >
                 {labels.education}

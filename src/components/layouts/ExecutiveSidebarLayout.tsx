@@ -162,7 +162,7 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
                 <div className="space-y-3">
                   {data.skillCategories.slice(0, 4).map((cat) => (
                     <div key={cat.id}>
-                      <span className="block text-[9.5px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                      <span className={`${isRtl ? '' : 'tracking-wider'} block text-[9.5px] font-bold text-slate-500 uppercase mb-1`}>
                         {cat.title}
                       </span>
                       <div className="flex flex-wrap gap-1">
@@ -229,7 +229,7 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
             <div className="space-y-5">
               {/* Header */}
               <header className="pb-3 border-b border-slate-200">
-                <h1 className="text-[28px] font-extrabold text-slate-950 tracking-tight leading-tight">
+                <h1 className={`${isRtl ? '' : 'tracking-tight'} text-[28px] font-extrabold text-slate-950 leading-tight`}>
                   {data.name}
                 </h1>
                 <p
@@ -242,7 +242,7 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
 
               {/* SUMMARY */}
               <section>
-                <h2 className="text-[11.5px] font-extrabold uppercase tracking-wider text-slate-900 mb-1.5">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[11.5px] font-extrabold uppercase text-slate-900 mb-1.5`}>
                   {labels.summary}
                 </h2>
                 <p className="text-[11px] leading-[1.65] text-slate-700 text-justify">
@@ -323,7 +323,7 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
 
               {/* SELECTED PROJECTS */}
               <section>
-                <h2 className="text-[11.5px] font-extrabold uppercase tracking-wider text-slate-900 mb-2">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[11.5px] font-extrabold uppercase text-slate-900 mb-2`}>
                   {labels.selectedProjects}
                 </h2>
                 <div className="grid grid-cols-2 gap-3">
@@ -421,7 +421,7 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
                   <div className="space-y-2">
                     {data.skillCategories.slice(4).map((cat) => (
                       <div key={cat.id}>
-                        <span className="block text-[9.5px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                        <span className={`${isRtl ? '' : 'tracking-wider'} block text-[9.5px] font-bold text-slate-500 uppercase mb-1`}>
                           {cat.title}
                         </span>
                         <div className="flex flex-wrap gap-1">
@@ -452,7 +452,7 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
             <div className="space-y-6">
               {/* MORE PROJECTS */}
               <section>
-                <h2 className="text-[11.5px] font-extrabold uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-2">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[11.5px] font-extrabold uppercase text-slate-900 mb-3 flex items-center gap-2`}>
                   <FolderGit2 className="w-3.5 h-3.5 text-slate-500" />
                   <span>{labels.moreProjects}</span>
                 </h2>
@@ -492,7 +492,7 @@ export const ExecutiveSidebarLayout: React.FC<LayoutProps> = ({
 
               {/* ENGINEERING HIGHLIGHTS */}
               <section>
-                <h2 className="text-[11.5px] font-extrabold uppercase tracking-wider text-slate-900 mb-3 flex items-center gap-2">
+                <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[11.5px] font-extrabold uppercase text-slate-900 mb-3 flex items-center gap-2`}>
                   <Layers className="w-3.5 h-3.5 text-slate-500" />
                   <span>{labels.highlights}</span>
                 </h2>

@@ -52,11 +52,11 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
           <div className="flex items-center gap-3">
             <ResumeLogo color={accent} className="w-8 h-8 shrink-0" />
             <div>
-              <h1 className="text-[22px] font-black tracking-tight text-slate-950 leading-none">
+              <h1 className={`${isRtl ? '' : 'tracking-tight'} text-[22px] font-black text-slate-950 leading-none`}>
                 {data.name}
               </h1>
               <p
-                className="text-[10.5px] font-bold tracking-wider uppercase mt-1"
+                className={`${isRtl ? '' : 'tracking-wider'} text-[10.5px] font-bold uppercase mt-1`}
                 style={{ color: accent }}
               >
                 {data.roleTitle}
@@ -88,7 +88,7 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
         {/* SUMMARY */}
         <section>
           <div className="flex items-center gap-2 mb-1">
-            <h2 className="text-[10.5px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+            <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[10.5px] font-extrabold uppercase text-slate-900 shrink-0`}>
               {labels.summary}
             </h2>
             <div className="h-px bg-slate-200 flex-1" />
@@ -101,7 +101,7 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
         {/* TECHNICAL SKILLS */}
         <section>
           <div className="flex items-center gap-2 mb-1.5">
-            <h2 className="text-[10.5px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+            <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[10.5px] font-extrabold uppercase text-slate-900 shrink-0`}>
               {labels.skills}
             </h2>
             <div className="h-px bg-slate-200 flex-1" />
@@ -110,7 +110,7 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
           <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[10px]">
             {data.skillCategories.slice(0, 4).map((cat) => (
               <div key={cat.id} className="space-y-1">
-                <span className="block font-bold text-slate-700 text-[9px] uppercase tracking-wider">
+                <span className={`${isRtl ? '' : 'tracking-wider'} block font-bold text-slate-700 text-[9px] uppercase`}>
                   {cat.title}
                 </span>
                 <div className="flex flex-wrap gap-1">
@@ -132,7 +132,7 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
         {/* EXPERIENCE */}
         <section>
           <div className="flex items-center gap-2 mb-1.5">
-            <h2 className="text-[10.5px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+            <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[10.5px] font-extrabold uppercase text-slate-900 shrink-0`}>
               {labels.experience}
             </h2>
             <div className="h-px bg-slate-200 flex-1" />
@@ -199,7 +199,7 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
         {/* SELECTED PROJECTS */}
         <section>
           <div className="flex items-center gap-2 mb-1.5">
-            <h2 className="text-[10.5px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+            <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[10.5px] font-extrabold uppercase text-slate-900 shrink-0`}>
               {labels.projects}
             </h2>
             <div className="h-px bg-slate-200 flex-1" />
@@ -240,7 +240,7 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
           {/* Engineering Highlights */}
           <section>
             <div className="flex items-center gap-2 mb-1">
-              <h2 className="text-[10px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+              <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[10px] font-extrabold uppercase text-slate-900 shrink-0`}>
                 {labels.highlights}
               </h2>
               <div className="h-px bg-slate-200 flex-1" />
@@ -258,7 +258,7 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
           {/* Education */}
           <section>
             <div className="flex items-center gap-2 mb-1">
-              <h2 className="text-[10px] font-extrabold uppercase tracking-wider text-slate-900 shrink-0">
+              <h2 className={`${isRtl ? '' : 'tracking-wider'} text-[10px] font-extrabold uppercase text-slate-900 shrink-0`}>
                 {labels.education}
               </h2>
               <div className="h-px bg-slate-200 flex-1" />
