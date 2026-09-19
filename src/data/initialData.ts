@@ -6,7 +6,7 @@ export const initialResumeData: DualResumeData = {
     roleTitle: "FULL-STACK SOFTWARE DEVELOPER",
     contact: {
       email: "amirrezesf@gmail.com",
-      phone: "+98 918 114 3396",
+      phone: "+98 9214834536",
       location: "Tehran, Iran",
       github: "github.com/amirrezesf",
       linkedin: "linkedin.com/in/amirrezesf",
@@ -69,7 +69,7 @@ export const initialResumeData: DualResumeData = {
         title: "CRM-Nuxt",
         subtitle: "RTL-First CRM Dashboard",
         linkText: "GitHub ↗",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/CRM-Nuxt",
         description:
           "A Persian, right-to-left CRM/admin dashboard with Jalali-calendar-aware date handling, a sales pipeline board, ranking tables, and Chart.js-driven analytics widgets — built for local-market sales and operations teams.",
         techStack: "Tech: Nuxt 4, Vue 3, TypeScript, Tailwind CSS, SCSS, Chart.js",
@@ -80,7 +80,7 @@ export const initialResumeData: DualResumeData = {
         title: "Food-App",
         subtitle: "Full-Stack Delivery Platform",
         linkText: "GitHub ↗",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/Food-App",
         description:
           "A full-stack food delivery system covering map-based delivery coverage, multi-branch support, financial reporting, and real-time order tracking across web and mobile.",
         techStack: "Tech: Django, DRF, React, Flutter, PostgreSQL/SQLite, REST APIs",
@@ -93,7 +93,7 @@ export const initialResumeData: DualResumeData = {
         title: "Chat-App",
         subtitle: "Real-Time Messaging App",
         linkText: "GitHub ↗",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/Chat-App",
         description:
           "A Flutter chat application backed by a Django server, supporting real-time communication behind a modern, custom-built UI.",
         techStack: "Tech: Flutter, Dart, Django",
@@ -104,7 +104,7 @@ export const initialResumeData: DualResumeData = {
         title: "wire2django",
         subtitle: "Wireframe-to-Code Generator",
         linkText: "GitHub ↗",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/wire2django",
         description:
           "A computer-vision tool that converts hand-drawn UI wireframes into working Django applications: detects form fields with OCR, infers Django field types, and generates ready-to-use models, forms, and views.",
         techStack: "Tech: Python, Django, OpenCV, OCR",
@@ -152,8 +152,8 @@ export const initialResumeData: DualResumeData = {
     educations: [
       {
         id: "edu-1",
-        degree: "Bachelor of Science — Information Technology",
-        institution: "Shahid Chamran University of Ahvaz",
+        degree: "Bachelor of Science — Health Information Technology (HIT)",
+        institution: "Ahvaz Jundishapur University of Medical Sciences",
         period: "2023 – Present",
       },
     ],
@@ -165,7 +165,7 @@ export const initialResumeData: DualResumeData = {
     roleTitle: "توسعه‌دهنده نرم‌افزار فول‌استک (Full-Stack Developer)",
     contact: {
       email: "amirrezesf@gmail.com",
-      phone: "۰۹۱۸ ۱۱۴ ۳۳۹۶",
+      phone: "+98 9214834536",
       location: "تهران، ایران",
       github: "github.com/amirrezesf",
       linkedin: "linkedin.com/in/amirrezesf",
@@ -228,7 +228,7 @@ export const initialResumeData: DualResumeData = {
         title: "CRM-Nuxt",
         subtitle: "داشبورد مدیریت ارتباط با مشتری تماماً راست‌چین",
         linkText: "گیت‌هاب ↖",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/CRM-Nuxt",
         description:
           "سامانه داشبورد مدیریتی و CRM بومی با پشتیبانی کامل از تاریخ و تقویم شمسی (جلالی)، پایپ‌لاین فروش کانبان، جداول ارزیابی عملکرد و نمودارهای آماری تحلیلی Chart.js ویژه تیم‌های فروش و عملیات.",
         techStack: "فناوری‌ها: Nuxt 4, Vue 3, TypeScript, Tailwind CSS, SCSS, Chart.js",
@@ -239,7 +239,7 @@ export const initialResumeData: DualResumeData = {
         title: "Food-App",
         subtitle: "سامانه یکپارچه سفارش آنلاین و توزیع غذا",
         linkText: "گیت‌هاب ↖",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/Food-App",
         description:
           "پلتفرم فول‌استک توزیع غذا شامل تعیین محدوده دلیوری روی نقشه، پشتیبانی چندشعبه‌ای، گزارش‌های مالی و سیستم پیگیری زنده سفارش در وب و اپلیکیشن موبایل.",
         techStack: "فناوری‌ها: Django, DRF, React, Flutter, PostgreSQL/SQLite, REST APIs",
@@ -252,7 +252,7 @@ export const initialResumeData: DualResumeData = {
         title: "Chat-App",
         subtitle: "پیام‌رسان بلادرنگ و سریع موبایل",
         linkText: "گیت‌هاب ↖",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/Chat-App",
         description:
           "اپلیکیشن چت توسعه‌یافته با فلاتر و متصل به سرور قدرتمند جنگو با معماری وب‌سوکت برای تبادل پیام‌های همزمان با رابط کاربری اختصاصی و روان.",
         techStack: "فناوری‌ها: Flutter, Dart, Django",
@@ -263,7 +263,7 @@ export const initialResumeData: DualResumeData = {
         title: "wire2django",
         subtitle: "مولد هوشمند کد جنگو از روی وایرفریم",
         linkText: "گیت‌هاب ↖",
-        linkUrl: "https://github.com/amirrezesf",
+        linkUrl: "https://github.com/amirrezesf/wire2django",
         description:
           "ابزار بینایی ماشین برای تبدیل طرح‌های دستی و کاغذی UI به پروژه‌های عملیاتی جنگو: استخراج خودکار فرم‌ها با الگوریتم OCR، تشخیص تایپ‌های فیلد و تولید فایل‌های Model، Form و View.",
         techStack: "فناوری‌ها: Python, Django, OpenCV, OCR",
@@ -311,8 +311,8 @@ export const initialResumeData: DualResumeData = {
     educations: [
       {
         id: "edu-1",
-        degree: "کارشناسی مهندسی فناوری اطلاعات (IT)",
-        institution: "دانشگاه شهید چمران اهواز",
+        degree: "کارشناسی فناوری اطلاعات سلامت (HIT)",
+        institution: "دانشگاه علوم پزشکی جندی‌شاپور اهواز",
         period: "۱۴۰۲ – تاکنون",
       },
     ],

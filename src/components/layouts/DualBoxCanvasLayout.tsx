@@ -175,10 +175,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
       id="resume-canvas-board"
       data-spread={spreadMode}
       data-backdrop={canvasBg}
-      className={`canvas-board-wrapper w-full max-w-full rounded-3xl p-4 sm:p-8 lg:p-10 transition-all border relative select-text ${canvasBg === 'charcoal'
-        ? 'border-slate-700/80 text-white'
-        : 'border-slate-300/80 text-slate-800'
-        }`}
+      className={`canvas-board-wrapper w-full max-w-full rounded-3xl p-4 sm:p-8 lg:p-10 transition-all border relative select-text ${canvasBg === 'charcoal' ? 'border-slate-700/80 text-white' : 'border-slate-300/80 text-slate-800'}`}
       style={{
         background: getCanvasBackground(),
       }}
@@ -195,16 +192,12 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span
-                className={`font-bold text-sm ${canvasBg === 'charcoal' ? 'text-white' : 'text-slate-800'
-                  }`}
+                className={`font-bold text-sm ${canvasBg === 'charcoal' ? 'text-white' : 'text-slate-800'}`}
               >
                 {labels.canvasTitle}
               </span>
               <span
-                className={`px-2 py-0.5 rounded-full text-[10px] font-bold border shadow-2xs ${canvasBg === 'charcoal'
-                  ? 'bg-slate-800 text-slate-200 border-slate-700'
-                  : 'bg-white text-slate-700 border-slate-200'
-                  }`}
+                className={`px-2 py-0.5 rounded-full text-[10px] font-bold border shadow-2xs ${canvasBg === 'charcoal' ? 'bg-slate-800 text-slate-200 border-slate-700' : 'bg-white text-slate-700 border-slate-200'}`}
               >
                 {data.name}
               </span>
@@ -224,10 +217,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
         <div className="flex items-center flex-wrap gap-2">
           {/* Backdrop Style Switcher */}
           <div
-            className={`flex items-center gap-1 p-1 rounded-xl border text-[10.5px] font-semibold ${canvasBg === 'charcoal'
-              ? 'bg-slate-800/90 border-slate-700 text-slate-300'
-              : 'bg-white/95 border-slate-200 text-slate-600'
-              }`}
+            className={`flex items-center gap-1 p-1 rounded-xl border text-[10.5px] font-semibold ${canvasBg === 'charcoal' ? 'bg-slate-800/90 border-slate-700 text-slate-300' : 'bg-white/95 border-slate-200 text-slate-600'}`}
           >
             {(
               [
@@ -240,10 +230,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                 key={t.id}
                 type="button"
                 onClick={() => setCanvasBg(t.id)}
-                className={`px-2 py-1 rounded-lg transition-all ${canvasBg === t.id
-                  ? 'bg-blue-600 text-white shadow-2xs font-bold'
-                  : 'hover:bg-slate-200/50'
-                  }`}
+                className={`px-2 py-1 rounded-lg transition-all ${canvasBg === t.id ? 'bg-blue-600 text-white shadow-2xs font-bold' : 'hover:bg-slate-200/50'}`}
               >
                 {t.label}
               </button>
@@ -277,10 +264,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
             type="button"
             onClick={handleExportCanvasImage}
             disabled={isExportingMockup}
-            className={`px-2.5 py-1.5 rounded-xl border flex items-center gap-1.5 text-xs font-semibold shadow-2xs transition-all ${canvasBg === 'charcoal'
-              ? 'bg-slate-800 hover:bg-slate-700 text-white border-slate-700'
-              : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'
-              }`}
+            className={`px-2.5 py-1.5 rounded-xl border flex items-center gap-1.5 text-xs font-semibold shadow-2xs transition-all ${canvasBg === 'charcoal' ? 'bg-slate-800 hover:bg-slate-700 text-white border-slate-700' : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'}`}
             title={labels.exportMockup}
           >
             {isExportingMockup ? (
@@ -301,10 +285,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
 
       {/* Pages Container holding Page 1 and Page 2 boxes */}
       <div
-        className={`dual-box-pages-container flex ${spreadMode === 'side-by-side' && settings.showPage2 && pageFilter === 'all'
-          ? 'flex-col 2xl:flex-row items-center 2xl:items-start justify-center gap-8 2xl:gap-10'
-          : 'flex-col items-center justify-center gap-10'
-          }`}
+        className={`dual-box-pages-container flex ${spreadMode === 'side-by-side' && settings.showPage2 && pageFilter === 'all' ? 'flex-col 2xl:flex-row items-center 2xl:items-start justify-center gap-8 2xl:gap-10' : 'flex-col items-center justify-center gap-10'}`}
       >
         {/* ========================================================================= */}
         {/* PAGE 1 BOX */}
@@ -635,7 +616,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                       >
                         <div className="space-y-1">
                           <div className="flex items-start justify-between gap-2 mb-1">
-                            <div className='items-center flex gap-2'>
+                            <div className="flex items-center gap-2">
                               <div
                                 className="p-1 rounded-lg shrink-0"
                                 style={{ backgroundColor: `${accent}15` }}

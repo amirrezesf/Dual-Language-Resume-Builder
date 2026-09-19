@@ -14,6 +14,10 @@
   [dir="rtl"] {
     font-family: var(--font-persian);
   }
+
+  .resume-preview-container[dir="rtl"] [class*="tracking-"] {
+    letter-spacing: 0 !important;
+  }
 }
 
 /* Persian numeral font feature support */
