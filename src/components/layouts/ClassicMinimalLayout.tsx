@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { ResumeContent, Language, ResumeSettings } from '../../types';
 import { SkillBadge } from '../common/SkillBadge';
+import { normalizeLinkHref } from '../../utils/linkUtils';
 
 interface LayoutProps {
   data: ResumeContent;
@@ -237,9 +238,15 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
                           {p.subtitle}
                         </span>
                       </div>
-                      <span className="text-[10.5px] font-bold text-slate-700">
-                        {p.linkText}
-                      </span>
+                      <a
+                        href={normalizeLinkHref(p.linkUrl)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-[10.5px] font-semibold hover:underline shrink-0 ext-font-override-target"
+                        style={{ color: accent }}
+                      >
+                        <span className="ext-font-override-target">{p.linkText}</span>
+                      </a>
                     </div>
                     <p className="text-[10.5px] text-slate-600 leading-relaxed mt-0.5">
                       {p.description}
@@ -292,9 +299,15 @@ export const ClassicMinimalLayout: React.FC<LayoutProps> = ({
                           {p.subtitle}
                         </span>
                       </div>
-                      <span className="text-[10.5px] font-bold text-slate-700">
-                        {p.linkText}
-                      </span>
+                      <a
+                        href={normalizeLinkHref(p.linkUrl)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-[10.5px] font-semibold hover:underline shrink-0 ext-font-override-target"
+                        style={{ color: accent }}
+                      >
+                        <span className="ext-font-override-target">{p.linkText}</span>
+                      </a>
                     </div>
                     <p className="text-[10.5px] text-slate-600 leading-relaxed mt-0.5">
                       {p.description}

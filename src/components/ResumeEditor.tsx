@@ -17,6 +17,7 @@ import {
   Check,
   Palette,
   Sparkles,
+  ExternalLink,
 } from 'lucide-react';
 import {
   DualResumeData,
@@ -297,7 +298,7 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
                           size="xs"
                         />
                         <span className="text-[10px] font-bold text-slate-700 mt-0.5">
-                          {isRtl ? b.labelFa : b.labelEn}
+                          {isRtl ? b.labelFa : b.labelEn} salam
                         </span>
                       </button>
                     );
@@ -1080,24 +1081,35 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
                     key={proj.id}
                     className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-2"
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-2">
                       <span className="font-bold text-slate-800">
                         {proj.title}
                       </span>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          updateCurrentContent((p) => ({
-                            ...p,
-                            selectedProjects: p.selectedProjects.filter(
-                              (_, i) => i !== pIdx
-                            ),
-                          }));
-                        }}
-                        className="text-red-500 hover:text-red-700 p-1"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="flex items-center gap-1.5">
+                        <a
+                          href={proj.linkUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1 text-[10.5px] font-semibold hover:underline shrink-0"
+                          style={{ color: '#0d9488' }}
+                        >
+                          <span>{proj.linkText || (isRtl ? 'گیت‌هاب ↖' : 'GitHub ↗')}</span>
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            updateCurrentContent((p) => ({
+                              ...p,
+                              selectedProjects: p.selectedProjects.filter(
+                                (_, i) => i !== pIdx
+                              ),
+                            }));
+                          }}
+                          className="text-red-500 hover:text-red-700 p-1"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2">
@@ -1233,24 +1245,35 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
                     key={proj.id}
                     className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-2"
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-2">
                       <span className="font-bold text-slate-800">
                         {proj.title}
                       </span>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          updateCurrentContent((p) => ({
-                            ...p,
-                            moreProjects: p.moreProjects.filter(
-                              (_, i) => i !== pIdx
-                            ),
-                          }));
-                        }}
-                        className="text-red-500 hover:text-red-700 p-1"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="flex items-center gap-1.5">
+                        <a
+                          href={proj.linkUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1 text-[10.5px] font-semibold hover:underline shrink-0"
+                          style={{ color: '#0d9488' }}
+                        >
+                          <span>{proj.linkText || (isRtl ? 'گیت‌هاب ↖' : 'GitHub ↗')}</span>
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            updateCurrentContent((p) => ({
+                              ...p,
+                              moreProjects: p.moreProjects.filter(
+                                (_, i) => i !== pIdx
+                              ),
+                            }));
+                          }}
+                          className="text-red-500 hover:text-red-700 p-1"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2">
@@ -1280,6 +1303,37 @@ export const ResumeEditor: React.FC<ResumeEditorProps> = ({
                           });
                         }}
                         placeholder="Subtitle"
+                        className="px-2 py-1 bg-white border border-slate-300 rounded"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <input
+                        type="text"
+                        value={proj.linkText}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          updateCurrentContent((p) => {
+                            const list = [...p.moreProjects];
+                            list[pIdx] = { ...list[pIdx], linkText: val };
+                            return { ...p, moreProjects: list };
+                          });
+                        }}
+                        placeholder="Link Label (e.g. GitHub ↗)"
+                        className="px-2 py-1 bg-white border border-slate-300 rounded"
+                      />
+                      <input
+                        type="text"
+                        value={proj.linkUrl}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          updateCurrentContent((p) => {
+                            const list = [...p.moreProjects];
+                            list[pIdx] = { ...list[pIdx], linkUrl: val };
+                            return { ...p, moreProjects: list };
+                          });
+                        }}
+                        placeholder="Link URL"
                         className="px-2 py-1 bg-white border border-slate-300 rounded"
                       />
                     </div>

@@ -30,6 +30,7 @@ import { ResumeContent, Language, ResumeSettings } from '../../types';
 import { ResumeLogo } from '../ResumeLogo';
 import { SkillBadge } from '../common/SkillBadge';
 import { exportResumeToPdf } from '../../utils/pdfExport';
+import { normalizeLinkHref } from '../../utils/linkUtils';
 
 interface LayoutProps {
   data: ResumeContent;
@@ -174,11 +175,10 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
       id="resume-canvas-board"
       data-spread={spreadMode}
       data-backdrop={canvasBg}
-      className={`canvas-board-wrapper w-full max-w-full rounded-3xl p-4 sm:p-8 lg:p-10 transition-all border relative select-text ${
-        canvasBg === 'charcoal'
-          ? 'border-slate-700/80 text-white'
-          : 'border-slate-300/80 text-slate-800'
-      }`}
+      className={`canvas-board-wrapper w-full max-w-full rounded-3xl p-4 sm:p-8 lg:p-10 transition-all border relative select-text ${canvasBg === 'charcoal'
+        ? 'border-slate-700/80 text-white'
+        : 'border-slate-300/80 text-slate-800'
+        }`}
       style={{
         background: getCanvasBackground(),
       }}
@@ -195,26 +195,23 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span
-                className={`font-bold text-sm ${
-                  canvasBg === 'charcoal' ? 'text-white' : 'text-slate-800'
-                }`}
+                className={`font-bold text-sm ${canvasBg === 'charcoal' ? 'text-white' : 'text-slate-800'
+                  }`}
               >
                 {labels.canvasTitle}
               </span>
               <span
-                className={`px-2 py-0.5 rounded-full text-[10px] font-bold border shadow-2xs ${
-                  canvasBg === 'charcoal'
-                    ? 'bg-slate-800 text-slate-200 border-slate-700'
-                    : 'bg-white text-slate-700 border-slate-200'
-                }`}
+                className={`px-2 py-0.5 rounded-full text-[10px] font-bold border shadow-2xs ${canvasBg === 'charcoal'
+                  ? 'bg-slate-800 text-slate-200 border-slate-700'
+                  : 'bg-white text-slate-700 border-slate-200'
+                  }`}
               >
                 {data.name}
               </span>
             </div>
             <p
-              className={`text-[11px] ${
-                canvasBg === 'charcoal' ? 'text-slate-400' : 'text-slate-500'
-              }`}
+              className={`text-[11px] ${canvasBg === 'charcoal' ? 'text-slate-400' : 'text-slate-500'
+                }`}
             >
               {isRtl
                 ? 'هر دو صفحه در یک پس‌زمینه یکپارچه به صورت دو باکس شناور با سایه عمیق قرار گرفته‌اند.'
@@ -227,11 +224,10 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
         <div className="flex items-center flex-wrap gap-2">
           {/* Backdrop Style Switcher */}
           <div
-            className={`flex items-center gap-1 p-1 rounded-xl border text-[10.5px] font-semibold ${
-              canvasBg === 'charcoal'
-                ? 'bg-slate-800/90 border-slate-700 text-slate-300'
-                : 'bg-white/95 border-slate-200 text-slate-600'
-            }`}
+            className={`flex items-center gap-1 p-1 rounded-xl border text-[10.5px] font-semibold ${canvasBg === 'charcoal'
+              ? 'bg-slate-800/90 border-slate-700 text-slate-300'
+              : 'bg-white/95 border-slate-200 text-slate-600'
+              }`}
           >
             {(
               [
@@ -244,11 +240,10 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                 key={t.id}
                 type="button"
                 onClick={() => setCanvasBg(t.id)}
-                className={`px-2 py-1 rounded-lg transition-all ${
-                  canvasBg === t.id
-                    ? 'bg-blue-600 text-white shadow-2xs font-bold'
-                    : 'hover:bg-slate-200/50'
-                }`}
+                className={`px-2 py-1 rounded-lg transition-all ${canvasBg === t.id
+                  ? 'bg-blue-600 text-white shadow-2xs font-bold'
+                  : 'hover:bg-slate-200/50'
+                  }`}
               >
                 {t.label}
               </button>
@@ -282,11 +277,10 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
             type="button"
             onClick={handleExportCanvasImage}
             disabled={isExportingMockup}
-            className={`px-2.5 py-1.5 rounded-xl border flex items-center gap-1.5 text-xs font-semibold shadow-2xs transition-all ${
-              canvasBg === 'charcoal'
-                ? 'bg-slate-800 hover:bg-slate-700 text-white border-slate-700'
-                : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'
-            }`}
+            className={`px-2.5 py-1.5 rounded-xl border flex items-center gap-1.5 text-xs font-semibold shadow-2xs transition-all ${canvasBg === 'charcoal'
+              ? 'bg-slate-800 hover:bg-slate-700 text-white border-slate-700'
+              : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200'
+              }`}
             title={labels.exportMockup}
           >
             {isExportingMockup ? (
@@ -307,11 +301,10 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
 
       {/* Pages Container holding Page 1 and Page 2 boxes */}
       <div
-        className={`dual-box-pages-container flex ${
-          spreadMode === 'side-by-side' && settings.showPage2 && pageFilter === 'all'
-            ? 'flex-col 2xl:flex-row items-center 2xl:items-start justify-center gap-8 2xl:gap-10'
-            : 'flex-col items-center justify-center gap-10'
-        }`}
+        className={`dual-box-pages-container flex ${spreadMode === 'side-by-side' && settings.showPage2 && pageFilter === 'all'
+          ? 'flex-col 2xl:flex-row items-center 2xl:items-start justify-center gap-8 2xl:gap-10'
+          : 'flex-col items-center justify-center gap-10'
+          }`}
       >
         {/* ========================================================================= */}
         {/* PAGE 1 BOX */}
@@ -331,9 +324,8 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
             {/* Watermark */}
             {settings.showWatermark && (
               <svg
-                className={`absolute top-0 pointer-events-none opacity-40 select-none ${
-                  isRtl ? 'left-0 scale-x-[-1]' : 'right-0'
-                }`}
+                className={`absolute top-0 pointer-events-none opacity-40 select-none ${isRtl ? 'left-0 scale-x-[-1]' : 'right-0'
+                  }`}
                 width="240"
                 height="200"
                 viewBox="0 0 240 200"
@@ -370,7 +362,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
 
             <div className="space-y-4">
               {/* HEADER SECTION */}
-              <div className="flex items-start justify-between gap-4 pb-3.5 border-b border-slate-200">
+              <div className={(isRtl ? '' : '') + " flex items-start justify-between gap-4 pb-3.5 border-b border-slate-200"}>
                 <div className="space-y-1 max-w-[480px]">
                   <h1 className={`${isRtl ? '' : 'tracking-tight'} text-3xl font-extrabold text-slate-900 leading-tight`}>
                     {data.name}
@@ -496,37 +488,37 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                         </div>
                         <div className="flex flex-wrap gap-1.5">
                           {data.languages.map((l, i) => {
-                          const hasLevel = Boolean(l.level?.trim());
-                          const hasCertificate = Boolean(l.certificateTitle?.trim()) && Boolean(l.certificateUrl?.trim());
-                          return (
-                            <span
-                              key={i}
-                              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-semibold border shadow-2xs"
-                              style={{
-                                backgroundColor: `${accent}0C`,
-                                borderColor: `${accent}25`,
-                                color: '#0f172a',
-                              }}
-                            >
+                            const hasLevel = Boolean(l.level?.trim());
+                            const hasCertificate = Boolean(l.certificateTitle?.trim()) && Boolean(l.certificateUrl?.trim());
+                            return (
                               <span
-                                className="w-1.5 h-1.5 rounded-full shrink-0"
-                                style={{ backgroundColor: accent }}
-                              />
-                              <span>{l.name}</span>
-                              {hasLevel && <span className="text-slate-500 font-normal text-[9px]">({l.level})</span>}
-                              {hasCertificate && (
-                                <a
-                                  href={l.certificateUrl}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="text-slate-600 underline underline-offset-2 hover:text-slate-800"
-                                >
-                                  — {l.certificateTitle}
-                                </a>
-                              )}
-                            </span>
-                          );
-                        })}
+                                key={i}
+                                className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-semibold border shadow-2xs"
+                                style={{
+                                  backgroundColor: `${accent}0C`,
+                                  borderColor: `${accent}25`,
+                                  color: '#0f172a',
+                                }}
+                              >
+                                <span
+                                  className="w-1.5 h-1.5 rounded-full shrink-0"
+                                  style={{ backgroundColor: accent }}
+                                />
+                                <span>{l.name}</span>
+                                {hasLevel && <span className="text-slate-500 font-normal text-[9px]">({l.level})</span>}
+                                {hasCertificate && (
+                                  <a
+                                    href={l.certificateUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-slate-600 underline underline-offset-2 hover:text-slate-800"
+                                  >
+                                    — {l.certificateTitle}
+                                  </a>
+                                )}
+                              </span>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
@@ -642,21 +634,32 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                         className="p-3 rounded-xl border border-slate-200/90 bg-white shadow-2xs flex flex-col justify-between"
                       >
                         <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <div
-                              className="p-1 rounded-lg shrink-0"
-                              style={{ backgroundColor: `${accent}15` }}
+                          <div className="flex items-start justify-between gap-2 mb-1">
+                            <div className='items-center flex gap-2'>
+                              <div
+                                className="p-1 rounded-lg shrink-0"
+                                style={{ backgroundColor: `${accent}15` }}
+                              >
+                                {renderProjectIcon(proj.icon)}
+                              </div>
+                              <div>
+                                <h3 className="font-bold text-slate-900 text-[11.5px] leading-tight">
+                                  {proj.title}
+                                </h3>
+                                <p className="text-[9.5px] text-slate-500">
+                                  {proj.subtitle}
+                                </p>
+                              </div>
+                            </div>
+                            <a
+                              href={normalizeLinkHref(proj.linkUrl)}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1 text-[10.5px] font-semibold hover:underline shrink-0"
+                              style={{ color: accent }}
                             >
-                              {renderProjectIcon(proj.icon)}
-                            </div>
-                            <div>
-                              <h3 className="font-bold text-slate-900 text-[11.5px] leading-tight">
-                                {proj.title}
-                              </h3>
-                              <p className="text-[9.5px] text-slate-500">
-                                {proj.subtitle}
-                              </p>
-                            </div>
+                              <span>{proj.linkText}</span>
+                            </a>
                           </div>
                           <p className="text-[10px] text-slate-600 leading-relaxed line-clamp-2 pt-0.5">
                             {proj.description}
@@ -702,9 +705,8 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
             {/* Watermark on Page 2 */}
             {settings.showWatermark && (
               <svg
-                className={`absolute top-0 pointer-events-none opacity-40 select-none ${
-                  isRtl ? 'left-0 scale-x-[-1]' : 'right-0'
-                }`}
+                className={`absolute top-0 pointer-events-none opacity-40 select-none ${isRtl ? 'left-0 scale-x-[-1]' : 'right-0'
+                  }`}
                 width="240"
                 height="200"
                 viewBox="0 0 240 200"
@@ -852,7 +854,7 @@ export const DualBoxCanvasLayout: React.FC<LayoutProps> = ({
                         </div>
 
                         <a
-                          href={proj.linkUrl}
+                          href={normalizeLinkHref(proj.linkUrl)}
                           target="_blank"
                           rel="noreferrer"
                           className="inline-flex items-center gap-1 text-[10.5px] font-semibold hover:underline shrink-0"

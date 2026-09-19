@@ -14,6 +14,7 @@ import {
 import { ResumeContent, Language, ResumeSettings } from '../../types';
 import { ResumeLogo } from '../ResumeLogo';
 import { SkillBadge } from '../common/SkillBadge';
+import { normalizeLinkHref } from '../../utils/linkUtils';
 
 interface LayoutProps {
   data: ResumeContent;
@@ -216,12 +217,15 @@ export const CompactSingleLayout: React.FC<LayoutProps> = ({
                     <span className="text-[11.5px] font-bold text-slate-900">
                       {p.title}
                     </span>
-                    <span
-                      className="text-[9.5px] font-bold"
+                    <a
+                      href={normalizeLinkHref(p.linkUrl)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-[9.5px] font-semibold hover:underline shrink-0 ext-font-override-target"
                       style={{ color: accent }}
                     >
-                      {p.linkText}
-                    </span>
+                      <span className="ext-font-override-target">{p.linkText}</span>
+                    </a>
                   </div>
                   <p className="text-[9.5px] text-slate-600 leading-normal line-clamp-2">
                     {p.description}

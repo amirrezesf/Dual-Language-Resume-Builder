@@ -24,6 +24,7 @@ import {
 import { ResumeContent, Language, ResumeSettings } from '../../types';
 import { ResumeLogo } from '../ResumeLogo';
 import { SkillBadge } from '../common/SkillBadge';
+import { normalizeLinkHref } from '../../utils/linkUtils';
 
 interface LayoutProps {
   data: ResumeContent;
@@ -422,13 +423,13 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
                         </div>
 
                         <a
-                          href={proj.linkUrl}
+                          href={normalizeLinkHref(proj.linkUrl)}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold hover:underline shrink-0"
+                          className="inline-flex items-center gap-1 text-[11px] font-semibold hover:underline shrink-0 ext-font-override-target"
                           style={{ color: accent }}
                         >
-                          <span>{proj.linkText}</span>
+                          <span className="ext-font-override-target">{proj.linkText}</span>
                         </a>
                       </div>
 
@@ -502,13 +503,13 @@ export const ModernTechLayout: React.FC<LayoutProps> = ({
                       </div>
 
                       <a
-                        href={proj.linkUrl}
+                        href={normalizeLinkHref(proj.linkUrl)}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-[11px] font-semibold hover:underline shrink-0"
+                        className="inline-flex items-center gap-1 text-[11px] font-semibold hover:underline shrink-0 ext-font-override-target"
                         style={{ color: accent }}
                       >
-                        <span>{proj.linkText}</span>
+                        <span className="ext-font-override-target">{proj.linkText}</span>
                       </a>
                     </div>
 

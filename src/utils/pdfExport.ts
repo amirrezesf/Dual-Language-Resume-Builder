@@ -1,5 +1,43 @@
 import html2canvas from 'html2canvas-pro';
 import { jsPDF } from 'jspdf';
+import { normalizeLinkHref } from './linkUtils';
+
+function collectPdfLinkAnnotations(
+  element: HTMLElement,
+  pdfWidth: number,
+  pdfHeight: number
+): Array<{ x: number; y: number; w: number; h: number; url: string }> {
+  const pageRect = element.getBoundingClientRect();
+
+  if (!pageRect.width || !pageRect.height) {
+    return [];
+  }
+
+  const annotations: Array<{ x: number; y: number; w: number; h: number; url: string }> = [];
+
+  const anchors = element.querySelectorAll<HTMLAnchorElement>('a[href]');
+  anchors.forEach((anchor) => {
+    const href = normalizeLinkHref(anchor.getAttribute('href'));
+    if (!href) {
+      return;
+    }
+
+    const rect = anchor.getBoundingClientRect();
+
+    const x = ((rect.left - pageRect.left) / pageRect.width) * pdfWidth;
+    const y = ((rect.top - pageRect.top) / pageRect.height) * pdfHeight;
+    const w = (rect.width / pageRect.width) * pdfWidth;
+    const h = (rect.height / pageRect.height) * pdfHeight;
+
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(w) || !Number.isFinite(h)) {
+      return;
+    }
+
+    annotations.push({ x, y, w, h, url: href });
+  });
+
+  return annotations;
+}
 
 export interface ExportPdfOptions {
   fileName?: string;
@@ -191,6 +229,19 @@ export async function exportResumeToPdf(
         }
 
         pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
+
+        const currentPdf = pdf;
+        if (!currentPdf) {
+          throw new Error('PDF was not initialized before adding link annotations.');
+        }
+
+        const linkAnnotations = collectPdfLinkAnnotations(element, pdfWidth, pdfHeight);
+        linkAnnotations.forEach(({ x, y, w, h, url }) => {
+          // jsPDF link annotations use the page's lower-left origin, while DOM rectangles
+          // are measured from the page's top-left. Convert the Y coordinate accordingly.
+          const pdfY = pdfHeight - (y + h);
+          currentPdf.link(x, pdfY, w, h, { url });
+        });
       } finally {
         element.removeAttribute('data-pdf-export-marker');
       }
